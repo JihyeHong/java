@@ -24,7 +24,7 @@ import org.apache.hadoop.mapreduce.Mapper;
 
 class MailReaderMapper extends Mapper<Text, BytesWritable, EdgeWritable, NullWritable> {
 	/*
-	Add code to the MailReaderMapper class to extract edges corresponding 
+	MailReaderMapper class to extract edges corresponding 
 	to the Email exchanges as per the instructions in the file. 
 	Make sure you do not include both: Email addresses not ending with @enron.com, and self-cycles.
 	*/
@@ -38,14 +38,15 @@ class MailReaderMapper extends Mapper<Text, BytesWritable, EdgeWritable, NullWri
 	
 	public Map<String, Integer> empList = new HashMap<String, Integer>();
 	
-	// Extract values after each header **
+	// Extract values after each header
 	private String stripCommand(String line, String com) {
 		int len = com.length();
 		if (line.length() > len)
 			return line.substring(len);
 		return null;
 	}
-
+	
+	// Parce a recipient email address
 	private String procFrom(String line) {
 		if (line == null)
 			return null;
@@ -67,10 +68,9 @@ class MailReaderMapper extends Mapper<Text, BytesWritable, EdgeWritable, NullWri
 		return from;
 	}
 
-	// TODO ***
+	// Parse a list of recipients email addresses
 	private void procRecipients(String line, List<String> recipients) {
-		// Compile a list of recipients
-		// Make sure only select Email addresses ending with
+		// Only select Email addresses ending with
 		// @enron.com
 
 		StringTokenizer st = new StringTokenizer(line, ",");
@@ -111,9 +111,8 @@ class MailReaderMapper extends Mapper<Text, BytesWritable, EdgeWritable, NullWri
 		
 		while(s.hasNextLine()) {
 			String line = s.nextLine();
-			// TODO: write code to read the data from the file
-			// and populate an in-memory data structure to enable
-			// efficient lookup by Email address
+			// Read the data from the file
+			// to efficiently lookup by Email address
 			
 			String [] lines = line.split(",");
 			int id = Integer.parseInt(lines[0]);
@@ -174,12 +173,11 @@ class MailReaderMapper extends Mapper<Text, BytesWritable, EdgeWritable, NullWri
 			// is false. This is a useful debugging practice.
 			assert(from.endsWith("@enron.com")); 
 
-			// TODO
-			// Add your code to emit outgoing edges
+			// emit outgoing edges
 			// (sender, recipient, timestamp). 
 			// The edges should be emitted as keys, the values are NullWritables.
 			//
-			// You may use EdgeWritables edgeOut to emit 
+			// EdgeWritables edgeOut to emit 
 			// an edge as a key, and noval to emit NullWritable as a value.
 			
 			if(empList.containsKey(from)){
