@@ -9,3 +9,11 @@ Page Rank Algorithm implementation
 - ArticleIndexer: finds web page URLs within news articles.
 
 The rest of text files can be used as sample data for this program.
+
+# Enron
+Data Mining with Hadoop 
+Map/Reduce Program Implementation
+
+This project incorporates two different Map/Reduce program.
+- MailReader: MapReduce program to parse the headers of the Email messages to extract triples consisting of the sender and the recipient employee ID, and the transmission timestamp.
+- MultipleOutput: A new MapReduce program for Time Slicing of Enron data set into multiple outputs.
