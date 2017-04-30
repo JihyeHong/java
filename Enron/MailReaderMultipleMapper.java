@@ -32,7 +32,7 @@ class MailReaderMultipleMapper extends Mapper<Text, BytesWritable, EdgeWritable,
 	
 	public Map<String, Integer> empList = new HashMap<String, Integer>();
 	
-	// Extract values after each header **
+	// Extract values after each header
 	private String stripCommand(String line, String com) {
 		int len = com.length();
 		if (line.length() > len)
@@ -61,7 +61,7 @@ class MailReaderMultipleMapper extends Mapper<Text, BytesWritable, EdgeWritable,
 		return from;
 	}
 
-	// TODO ***
+	// Parce recipients
 	private void procRecipients(String line, List<String> recipients) {
 		// Compile a list of recipients
 		// Make sure only select Email addresses ending with
@@ -103,9 +103,8 @@ class MailReaderMultipleMapper extends Mapper<Text, BytesWritable, EdgeWritable,
 		
 		while(s.hasNextLine()) {
 			String line = s.nextLine();
-			// TODO: write code to read the data from the file
-			// and populate an in-memory data structure to enable
-			// efficient lookup by Email address
+			// Read the data from the file
+			// to efficiently lookup by Email address
 			
 			String [] lines = line.split(",");
 			int id = Integer.parseInt(lines[0]);
