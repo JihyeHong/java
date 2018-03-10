@@ -17,3 +17,9 @@ Map/Reduce Program Implementation
 This project incorporates two different Map/Reduce program.
 - MailReader: MapReduce program to parse the headers of the Email messages to extract triples consisting of the sender and the recipient employee ID, and the transmission timestamp.
 - MultipleOutput: A new MapReduce program for Time Slicing of Enron data set into multiple outputs.
+
+# Streams
+Java 8 streams practice
+
+- Books: a directory including stream API practices related with a library's archive of books
+- Sms: a directory including stream API practices of sms messages
